@@ -9,9 +9,25 @@
   <title>Document</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="sidebar">
+    <div class="fon btnc" style="display: flex;justify-content:space-evenly;">Side Bar <div class="close" style="cursor: pointer;"><i class="fas fa-close" style="height: 30px;width: 30px;color: #dc3545;background-color: #dc354573;border-radius: 5px;"></i></div></div>
+    <div class="inf">
+    <span>Account <i class="fas fa-user"></i></span>
+    <span>Secure <i class="fas fa-lock"></i></span>
+    <span>Points <i class="fas fa-dollar"></i></span>
+    <span>Payment <i class="fas fa-money-bill"></i></span>
+    <span>Edit <i class="fas fa-edit"></i></span>
+    <span>About <i class="fas fa-question"></i></span>
+    <span>Contact us <i class="fas fa-headphones"></i></span>
+    <span>Services <i class="fas fa-link"></i></span> 
+     <span>Facebook <i class="fa-brands fa-facebook-square"></i></span> 
+     <span>Twitter <i class="fa-brands fa-twitter-square"></i></span> 
+     <span>Linked in <i class="fa-brands fa-linkedin"></i></span> 
+    </div>
+    </div>
+  <nav class="navbar navbar-expand-lg bg-dark" >
     <div class="container-fluid">
-      <a class="navbar-brand text-light" href="#"><i class="fa-solid fa-bank"></i>Academy</a>
+      <a class="navbar-brand text-light" href="#"><i class="fa-solid fa-bank"></i>&MediumSpace; Academy</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #41464b;">
         <span class="navbar-toggler-icon" style="background-color: #41464b;"></span>
       </button>
@@ -27,13 +43,18 @@
             <a href="#" class="nav-link text-light me-3">About us</a>
           </li>
           <li class="nav-item">
-           <div class="btn btn-primary p-0"> <a class="nav-link text-light">Contact</a></div>
+            <div class="btn btn-primary p-2 me-2"> Contact </div>
+          </li>
+          <li class="nav-item bxs">
+             <i class="fas fa-bars fa-2x bar" style="display: inline;"></i>
+            
           </li>
         </ul>
         
       </div>
     </div>
   </nav>
+  
   <!--Welcome state-->
 <div class="conding">
   <div class="para">
@@ -180,7 +201,7 @@
   <!-- end payment methods -->
   </div>
       </div>
-
+      
 <style>
   *{
     font-family: system-ui;
@@ -435,11 +456,66 @@ position: relative;
    width: 100%;
    text-align: center;
 }
-.nav-item:hover:not(:last-child){
-transition: 0.1s;
-border-bottom: 2px solid #fff;
+.sidebar{
+  background-color: #111;
+  width: 250px;
+  height: 100vh;
+  text-align: center;
+  transition: 0.7s;
+  position: fixed;
+  transform: translateX(-250px);
+  z-index: 10000;
 }
- 
+.fon{
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid #444;
+}
+.inf{
+  font-size: 24px;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.inf >span{
+  transition: 0.3s;
+}
+.inf > span:not(:last-child){
+line-height: 60px;
+border-bottom: 1px solid #444;
+}
+.inf > span:hover{
+  padding-left: 35px;
+}
+.bar{
+  height: 40px;
+  width: 30px;
+ cursor: pointer;
+ color: white;
+}
+ .hide{
+  transform: translateX(0px);
+}
+
+.nav-item a::before{
+  content: '';
+  height: 2px;
+  width: 0%;
+  background-color: #fff;
+  position: absolute;
+  transition: 0.3s;
+  left: 0;
+  bottom: 0;
+}
+ .nav-item a{
+  position: relative;
+ }
+ .nav-item a:hover:before{
+  width: 100%;
+ }
 @media screen and (max-width:940px){
   
   .coder{
@@ -454,7 +530,7 @@ border-bottom: 2px solid #fff;
     height: fit-content;
   }
   .mostpopular{
-    margin-left: 8%;
+    margin-left: 5%;
     margin-top: 5%;
     
   }
@@ -478,6 +554,7 @@ border-bottom: 2px solid #fff;
   }
   .payment-methods{
     align-items: start;
+    margin-left:5%;
   }
   .methods{
     margin-left: 0;
@@ -550,6 +627,9 @@ border-bottom: 2px solid #fff;
 <script> 
 // progress
 let progress = document.querySelectorAll('.skills > div > span')
+let btn = document.querySelector('.bxs')
+let side = document.querySelector('.sidebar')
+let close = document.querySelector('.close')
 window.onscroll = function () {
 if(window.scrollY >= 620){
 progress.forEach((el) => {
@@ -560,7 +640,12 @@ el.textContent = el.style.width
 }
 // end progress
 
-
+btn.onclick = function x(){
+  side.classList.add('hide')
+}
+close.onclick = function(){
+  side.classList.remove('hide')
+}
 </script>
 </body>
 </html>
